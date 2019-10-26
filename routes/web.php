@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::resource('trip', 'TripController');
+
+Route::resource('postManager', 'PostController');
+
+Route::get('blade', function () {
+    return view('child');
 });

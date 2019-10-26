@@ -1,0 +1,240 @@
+body {
+    letter-spacing: 0.0625em;
+    font-family: 'Nunito';
+}
+
+
+/* Nav */
+
+#navbarfixed {
+    z-index: 18;
+    position: fixed;
+    bottom: 10px;
+    right: 0px;
+    width: 150px;
+}
+
+.icon-bar {
+    width: 22px;
+    height: 2px;
+    background-color: #B6B6B6;
+    display: block;
+    transition: all 0.2s;
+    margin-top: 4px
+}
+
+.navbar-toggler {
+    border: none;
+    background: transparent !important;
+}
+
+.navbar-toggler .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+}
+
+.navbar-toggler .middle-bar {
+    opacity: 0;
+}
+
+.navbar-toggler .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+}
+
+.navbar-toggler.collapsed .top-bar {
+    transform: rotate(0);
+}
+
+.navbar-toggler.collapsed .middle-bar {
+    opacity: 1;
+}
+
+.navbar-toggler.collapsed .bottom-bar {
+    transform: rotate(0);
+}
+
+
+/* **Nav  */
+
+#logo {
+    z-index: 20;
+    position: fixed;
+    width: 450px;
+    top: 10%;
+    left: 50%;
+    margin-left: -225px;
+    /* Negative half of width. */
+}
+
+
+/* Logo */
+
+#logo-letter {
+    z-index: 20;
+    position: fixed;
+    width: 100px;
+    top: 2%;
+    left: 50%;
+    margin-left: -50px;
+    /* Negative half of width. */
+}
+
+#logo-text{
+    z-index: 25;
+    position: fixed;
+    width: 450px;
+    top: 50%;
+    left: 50%;
+    margin-left: -225px;
+    /* Negative half of width. */
+
+}
+
+/* **Logo */
+
+#mapContainer {
+    z-index: 0;
+}
+
+#mapHide {
+    position: absolute;
+    top: 0px;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.75);
+    width: 100%;
+    height: 100vh;
+}
+
+#map {
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+}
+
+#settings-logo {
+    z-index: 5;
+    position: fixed;
+    width: 100px;
+    bottom: -20px;
+    left: 50%;
+    margin-left: -50px;
+    /* Negative half of width. */
+}
+
+#filter {
+    width: 100%;
+}
+
+.filterIcon {
+    height: 40px;
+    width: 40px;
+}
+
+#mapSettings {
+    background-color: white;
+    width: 70%;
+    position: fixed;
+    bottom: -400px;
+    left: 15%;
+    z-index: 12;
+}
+
+#tripSelection{
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    height: 100px;
+    overflow: scroll;
+
+}
+
+#eventDisplayerContainer {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 19;
+    height: 100%;
+}
+
+#eventDisplayer {
+    position: absolute;
+    z-index: 20;
+    height: 70%;
+    width: 90%;
+    left: 50%;
+    margin-left: -45%;
+    top: 10%;
+    /*bottom: 10%;*/
+    background-color: white;
+    animation: createBox .5s;
+}
+
+@keyframes createBox {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+#eventDisplayerDivImg {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    background-color: black;
+    /* align horizontal */
+    align-items: center;
+    /* align vertical */
+}
+
+#location {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#caption {
+    height: 100%;
+    text-align: left;
+    font-size: 0.7em;
+    overflow: scroll;
+}
+
+.slider {
+    width: 100%;
+    position: fixed;
+    bottom: 60px;
+    z-index: 4;
+}
+
+.slick-slide {
+  margin: 0px 20px;
+}
+
+.slick-slide img {
+  height: 100px;
+  
+}
+
+.slick-slide {
+  transition: all ease-in-out .3s;
+  opacity: .8;
+}
+
+.slick-active {
+  opacity: .8;
+}
+
+.slick-current {
+  opacity: 1;
+}
+
+footer {
+    background-color: #161616 !important;
+    padding: 0.2rem 0;
+    font-size: 0.5em;
+}

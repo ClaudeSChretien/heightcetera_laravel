@@ -1,0 +1,30 @@
+{
+  "name": "heightcetera_pc",
+  "version": "1.0.0",
+  "description": "Travel map",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClaudeSChretien/heightcetera_pc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ClaudeSChretien/heightcetera_pc/issues"
+  },
+  "homepage": "https://github.com/ClaudeSChretien/heightcetera_pc#readme",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.1"
+  },
+  "dependencies": {
+    "aos": "^3.0.0-beta.6",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "macy": "^2.5.0",
+    "photoswipe": "^4.1.3"
+  }
+}
