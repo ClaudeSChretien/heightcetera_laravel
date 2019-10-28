@@ -15,10 +15,15 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('trip', 'TripController');
 
-Route::resource('postManager', 'PostController');
+//Route::resource('postManager', 'PostController');
+
+Route::resource('trip', 'TripController');
+Route::resource('trip/{trip}/postManager', 'PostController');
 
 Route::get('blade', function () {
     return view('child');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

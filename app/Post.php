@@ -12,6 +12,7 @@ class Post extends Model
         'lon',
         'lat',
         'path',
+        'image',
         'photographer',
         'rating',
         'date',

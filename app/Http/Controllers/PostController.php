@@ -3,20 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\Post;
+use App\Trip;
 use Carbon\Carbon;
 
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        //$this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($test)
     {
         //
+        $trip = Trip::where('name',$test)->first();
+        if($trip)
+            return view('postManager',compact("trip"));
+        else
+            return redirect('/');
     }
 
     /**
@@ -24,9 +36,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($test)
     {
-        return view('postManager.create');
+        $trip = Trip::where('name',$test)->first();
+        if($trip)
+            return view('postManager.create',compact("trip"));
+        else
+            return redirect('/');
     }
 
     /**
@@ -35,27 +51,38 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $trip)
     {
         $request->validate([
             'name'=>'required',
             'lon'=>'required',
             'lat'=>'required',
-            'path'=>'required',
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'photographer'=>'required',
             'rating'=>'required',
             'date'=>'required',
             'type'=>'required',
             'text'=>'required',
         ]);
+        
+        $image = $request->file('image');
+        $extension = $image->getClientOriginalExtension();
+        $filename = $request->get('name') . "_" . time().'.'.$image->getClientOriginalExtension();
+        Storage::disk('image')->put($filename,  File::get($image));
 
-        $dt = Carbon::now();
+        
+       
+        //$check = Post::insert($insert);
+ 
+        //return Redirect::to("image")->withSuccess('Great! Image has been successfully uploaded.');
 
-        $contact = new Post([
+
+        $post = new Post([
             'name' => $request->get('name'),
             'lon' => $request->get('lon'),
             'lat' => $request->get('lat'),
-            'path' => $request->get('path'),
+            'path' => $filename,
             'photographer' => $request->get('photographer'),
             'rating' => $request->get('rating'),
             'date' => $request->get('date'),//$dt->toDateString(),
@@ -63,7 +90,7 @@ class PostController extends Controller
             'text' => $request->get('text'),
 
         ]);
-        $contact->save();
+        $post->save();
         return redirect('/postManager')->with('success', 'Contact saved!');
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateTripsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,12 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('trips', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->number('trip_id');
-            $table->string('name');
+            $table->string("name");
             $table->decimal('lon');
             $table->decimal('lat');
-            $table->string('path');
-            $table->string('photographer');
-            $table->string('rating');
-            $table->date('date');
-            $table->string('type');
-            $table->string('text');
         });
     }
 
@@ -36,6 +29,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('trips');
     }
 }

@@ -24,6 +24,7 @@ class TripController extends Controller
      */
     public function create()
     {
+        return "test";
         //
     }
 
