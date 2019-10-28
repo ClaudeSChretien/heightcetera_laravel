@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Trip;
 
 class TripController extends Controller
 {
@@ -15,6 +15,11 @@ class TripController extends Controller
     public function index()
     {
         //
+        $trips = Trip::all();
+        if($trips)
+            return view('trips',compact("trips"));
+        else
+            return redirect('/');
     }
 
     /**
@@ -45,10 +50,14 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($name)
     {
         //
-        return view("trip");
+        $trip = Trip::where('name',$name)->first();
+        if($trip)
+            return view('trip',compact("trip"));
+        else
+            return redirect('/');
     }
 
     /**

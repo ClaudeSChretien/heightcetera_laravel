@@ -73,8 +73,8 @@
             @auth
             <a href="{{ url('/home') }}">Home</a>
             @else
-            <a href="{{ url('/') }}">Home</a>
 
+            <a href="{{ url('/') }}">Home</a>
             <a href="{{ route('login') }}">Login</a>
 
             @if (Route::has('register'))
@@ -86,16 +86,14 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Post Manager
+                Trips
             </div>
-            <div class="title m-b-md">
-                {{$trip->name}}
-            </div>
-
 
             <div class="links">
-
-                <a href="/trip/{{$trip->name}}/postManager/create">Create</a>
+                
+                @foreach ($trips as $trip)
+                <a href="/trip/{{ $trip->name }}"> {{ $trip->name }} </a>
+                @endforeach
             </div>
         </div>
     </div>

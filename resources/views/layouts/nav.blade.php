@@ -8,6 +8,9 @@
             <li class="nav-item active">
                 <a class="nav-link" href="#">About</a>
             </li>
+            <li class="nav-item active">
+                    <a class="nav-link" href="/trips">{{$trip->name}}</a>
+                </li>
         </ul>
     </div>
     <a class="navbar-brand" href="#">Login</a>
