@@ -4,18 +4,8 @@ $(document).ready(function() {
         
         // Create Slider
             var src = item.path
-            $(".slider").append("<div>\
-            <img src='/img/"+ src + "'>\
-          </div>")
-          $(".slider").append("<div>\
-            <img src='/img/"+ src + "'>\
-          </div>")
-          $(".slider").append("<div>\
-            <img src='/img/"+ src + "'>\
-          </div>")
-          $(".slider").append("<div>\
-            <img src='/img/"+ src + "'>\
-          </div>")
+            $(".slider").append("<div><img src='/img/"+ src + "' class='sliderimg'></div>")
+          
           
     });
 
@@ -35,7 +25,7 @@ $(document).ready(function() {
                 duration: 500,
                 complete: function() {
                     $("#settings-logo").animate({
-                        bottom: "-5px"
+                        bottom: "-15px"
                     }, 500);
                 }
             })
@@ -81,11 +71,14 @@ $(document).ready(function() {
                     $(".filter").each(function(index) {
                         if (this.id != activeFilter.id) {
                             $(this).addClass("active");
+                            $(this).addClass("btn-primary");
                             categories.push(this.id)
                         }
                     });
-                else
+                else{
                     $(this).addClass("active")
+                    $(this).addClass("btn-primary");
+                }
                 categories.push(this.id)
                     // code block
                 break;
@@ -93,6 +86,7 @@ $(document).ready(function() {
                 $(".filter").each(function(index) {
                     if (thisFilter.id != this.id) {
                         $(this).removeClass("active");
+                        $(this).removeClass("btn-primary");
                         categories.splice(categories.indexOf(this.id), 1);
                     }
                 });
@@ -100,6 +94,7 @@ $(document).ready(function() {
                 break;
             default:
                 $(this).toggleClass("active")
+                $(this).toggleClass("btn-primary");
                 if ($(this).hasClass("active")) categories.push(this.id)
                 else categories.splice(categories.indexOf(this.id), 1);
                 // code block
@@ -111,6 +106,14 @@ $(document).ready(function() {
         });
         addMarkers(markerTemp)
     })
+
+    $( ".sliderimg" ).each(function(index) {
+        $(this).on("click", function(){
+            // For the boolean value
+            displayImage(markersInfos[index]);
+        });
+    });
+    
 });
 
 
@@ -123,6 +126,7 @@ var markerCluster;
 
 function initMap() {
 
+    // where the map is located .. Need to make that responsive
     var mapOptions = {
         center: new google.maps.LatLng(-27.470125, 153.021072),
         zoom: 12,
@@ -132,22 +136,22 @@ function initMap() {
 
     };
 
+    // create the map
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     addMarkers(markersInfos);
+    // marker cluser. aglomerate markers when close
     markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+    
+
     google.maps.event.addListener(map, 'idle', function() {
-        showVisibleMarkers();
+        //showVisibleMarkers();
     });
 }
 
 function addMarkers(markersInfos) {
-    if (typeof variable !== 'undefined') {
-        markerCluster.setMap(null);
-    }
-
+    
     for (var i = 0; i < markers.length; i++) {
-
         markers[i].setMap(null);
     }
 
@@ -162,7 +166,7 @@ function addMarkers(markersInfos) {
     for (var i = 0; i < markersInfos.length; i++) {
         var markerInfos = markersInfos[i]
         markerIcon["url"] = '/img/icon/' + markerInfos.type + ".png"
-        var myLatLng = new google.maps.LatLng(parseFloat(markerInfos.lat), parseFloat(markerInfos.lon)),
+        var myLatLng = new google.maps.LatLng(markerInfos.lat, markerInfos.lon),
             marker = new google.maps.Marker({
                 position: myLatLng,
                 title: markerInfos.name,
@@ -178,18 +182,14 @@ function addMarkers(markersInfos) {
         // Keep marker instances in a global array
         markers.push(marker);
     }
-    if (typeof variable !== 'undefined') {
-        // the variable is defined
-        markerCluster.setMap(null);
-
-    }
+    
     if (typeof markerCluster !== 'undefined') {
         // the variable is defined
         markerCluster.clearMarkers()
         markerCluster.addMarkers(markers)
     }
 }
-
+/* function to connect map to gallery.. Could be usefull with 
 function showVisibleMarkers() {
     var bounds = map.getBounds()
     for (var i = 0; i < markers.length; i++) {
@@ -202,7 +202,9 @@ function showVisibleMarkers() {
             infoPanel.hide();
         }
     }
+    
 }
+*/
 
 /* Lock */
 $("#logo").click(function() {
@@ -223,10 +225,11 @@ $("#logo").click(function() {
         "margin-left": "-70px"
     }, 1500);
 
-    location.hash = "map";
-    location.hash = null;
+    //location.hash = "map";
+    //location.hash = null;
 
-    $("#mapHide").fadeOut(300)
+    // white hider
+    $("#mapHide").fadeOut(1500)
 
     map.setOptions({ gestureHandling: 'greedy' });
 });
@@ -238,7 +241,7 @@ var eventDisplayerImg = $("#eventDisplayerImg");
 function displayImage(marker) {
     eventDisplayerContainer.css("display", "block");
     var img = $("#" + marker.name)
-    eventDisplayerImg.attr("src", img.attr("src"));
+    eventDisplayerImg.attr("src", "/img/"+marker.path);
     var imgHeight = $("#eventDisplayerImg").height();
     var imgWidth = $("#eventDisplayerImg").width();
     if (imgHeight > imgWidth)

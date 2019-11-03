@@ -17,15 +17,15 @@
     <!-- Map Filter -->
     <div id="mapSettings">
         <div id="filter" class="rounded">
-            <div class="btn-group p-0 col-6 offset-4" role="group">
-                <div type="button" id="restaurant" class="filter active"><img src="/img/icon/restaurant.png" class="filterIcon" alt=""><br>Restaurant</div>
-                <div type="button" id="personal" class="filter active"><img src="/img/icon/personal.png" class="filterIcon" alt=""><br>Personal</div>
-                <div type="button" id="activity" class="filter active"><img src="/img/icon/activity.png" class="filterIcon" alt=""><br>activities</div>
+            <div class="btn-group filter-options w-100">
+                <button class="btn btn-primary filter active" id="restaurant"><img src="/img/icon/restaurant.png" class="filterIcon" alt=""></button>
+                <button class="btn btn-primary filter active" id="personal"><img src="/img/icon/personal.png" class="filterIcon" alt=""></button>
+                <button class="btn btn-primary filter active" id="activity"><img src="/img/icon/activity.png" class="filterIcon" alt=""></button>
             </div>
         </div>
 
     </div>
     <!-- **Map Filter -->
-    
+
 </div>
 <!-- **Map app -->
