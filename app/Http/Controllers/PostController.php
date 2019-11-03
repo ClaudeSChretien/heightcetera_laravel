@@ -53,6 +53,8 @@ class PostController extends Controller
      */
     public function store(Request $request, $trip)
     {
+
+        $trip_id = Trip::where('name', $trip)->first()->id;
         $request->validate([
             'name'=>'required',
             'lon'=>'required',
@@ -82,6 +84,7 @@ class PostController extends Controller
             'name' => $request->get('name'),
             'lon' => $request->get('lon'),
             'lat' => $request->get('lat'),
+            'trip_id' => $trip_id,
             'path' => $filename,
             'photographer' => $request->get('photographer'),
             'rating' => $request->get('rating'),
@@ -91,7 +94,7 @@ class PostController extends Controller
 
         ]);
         $post->save();
-        return redirect('/postManager')->with('success', 'Contact saved!');
+        return redirect('/trip/'.$trip.'/postManager')->with('success', 'Contact saved!');
     }
 
     /**
@@ -104,6 +107,19 @@ class PostController extends Controller
     {
         //
     }
+
+    public function markers($name)
+    {
+        $id = Trip::where('name', $name)->first()->id;
+        $posts = Trip::find($id)->posts;
+        if($posts)
+            return $posts;
+        else
+            return redirect('/');
+
+        return $id;
+    }
+    
 
     /**
      * Show the form for editing the specified resource.

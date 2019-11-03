@@ -11,6 +11,7 @@ class Post extends Model
         'name',
         'lon',
         'lat',
+        'trip_id',
         'path',
         'image',
         'photographer',

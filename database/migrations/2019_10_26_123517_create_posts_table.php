@@ -16,16 +16,16 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->number('trip_id');
+            $table->integer('trip_id');
             $table->string('name');
-            $table->decimal('lon');
-            $table->decimal('lat');
+            $table->decimal('lon', 11, 8);
+            $table->decimal('lat', 11, 8);
             $table->string('path');
             $table->string('photographer');
             $table->string('rating');
             $table->date('date');
             $table->string('type');
-            $table->string('text');
+            $table->text('text');
         });
     }
 

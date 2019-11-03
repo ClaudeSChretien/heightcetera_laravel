@@ -1,6 +1,6 @@
 <!-- Map app -->
 <div id="mapContainer">
-    <!-- Map Hide 
+    <!-- Map Hide -->
     <div id="mapHide">
     </div>
     <!-- **Map Hide -->

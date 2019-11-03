@@ -94,6 +94,11 @@ body {
 /* **Logo */
 
 #mapContainer {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
     z-index: 0;
 }
 
@@ -122,6 +127,14 @@ body {
     /* Negative half of width. */
 }
 
+#logo-text-header{
+    position: fixed;
+    z-index: 5;
+    left: 50%;
+    top: 30px;
+    width: 350px;
+    margin-left: -175px;
+}
 #filter {
     width: 100%;
 }
@@ -208,7 +221,7 @@ body {
     width: 100%;
     position: fixed;
     bottom: 60px;
-    z-index: 4;
+    z-index: 1;
 }
 
 .slick-slide {

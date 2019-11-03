@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    console.log("ready!");
 
     markersInfos.forEach((item) => {
         
-            var src = item.imgSrc
+        // Create Slider
+            var src = item.path
             $(".slider").append("<div>\
             <img src='/img/"+ src + "'>\
           </div>")
@@ -19,6 +19,7 @@ $(document).ready(function() {
           
     });
 
+    // 
     $("#settings-logo").click(function() {
         if ($(this).hasClass("hidden")) {
 
@@ -105,7 +106,7 @@ $(document).ready(function() {
         }
         var markerTemp = []
         markersInfos.forEach((item, index) => {
-            if (categories.indexOf(item.eventType) >= 0)
+            if (categories.indexOf(item.type) >= 0)
                 markerTemp.push(item)
         });
         addMarkers(markerTemp)
@@ -160,8 +161,8 @@ function addMarkers(markersInfos) {
 
     for (var i = 0; i < markersInfos.length; i++) {
         var markerInfos = markersInfos[i]
-        markerIcon["url"] = markerInfos.url
-        var myLatLng = new google.maps.LatLng(markerInfos.Position),
+        markerIcon["url"] = '/img/icon/' + markerInfos.type + ".png"
+        var myLatLng = new google.maps.LatLng(parseFloat(markerInfos.lat), parseFloat(markerInfos.lon)),
             marker = new google.maps.Marker({
                 position: myLatLng,
                 title: markerInfos.name,

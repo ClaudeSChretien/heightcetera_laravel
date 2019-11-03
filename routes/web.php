@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index');
 
 
 //Route::resource('postManager', 'PostController');
@@ -21,6 +19,7 @@ Route::get('/', function () {
 Route::resource('trips', 'TripController');
 Route::resource('trip', 'TripController');
 
+Route::get('trip/{trip}/markers', 'PostController@markers');
 Route::resource('trip/{trip}/postManager', 'PostController');
 
 Route::get('blade', function () {
