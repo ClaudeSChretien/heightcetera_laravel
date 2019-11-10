@@ -3,50 +3,68 @@
     <!-- used to block the lock  -->
     <div id="eventDisplayer" class="rounded">
 
-        <!-- Image -->
+
         <div class="row p-0 m-0 h-100">
-            <div class="col-9 p-0 h-100 text-center" id="eventDisplayerDivImg">
-                <img class="" id="eventDisplayerImg">
-                <i class="fas fa-thumbs-up text-success" style="position: absolute;bottom:10px;right:10px;font-size: 3em;"></i>
-            </div>
-            <div class="col-3 pt-2 h-100">
-                <div class="row p-0 m-0">
-                    <h3>
-                        <img src="/img/icon/activity.png" alt="this test" class="col-2">
-                        <a href="http://www.google.ca" class="text-dark" target="_blank" id="location">
-                        </a>
-                    </h3>
+            <!-- Image -->
+            <div class="col-md-12 col-lg-9 p-0 text-center" id="eventDisplayerDivImg">
+                <div id="eventDisplayerImgDiv" style="position:relative">
+                    <img id="eventDisplayerImg">
+                    <!-- Thumb -->
+                    <i class="fas fa-thumbs-up fa-lg text-success"
+                        style="position: absolute;bottom:10px;right:10px;font-size: 3em;"></i>
                 </div>
+            </div>
+            <!-- **Image -->
+
+            <div class="col-md-12 col-lg-3" id="eventDisplayerInfo">
+                <!-- Title -->
+                <div class="row">
+                    <div class="media p-2">
+                        <span class="media-left">
+                            <img class="w-50" src="/img/icon/activity.png" alt="...">
+                        </span>
+                        <div class="media-body p-1">
+                            <h5>
+                                <a href="http://www.google.ca" class="text-dark" target="_blank" id="location">
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- **Title -->
 
                 <!-- Date -->
-                <div class="row p-0">
-                    <p>12-04-2019</p>
+                <div class="row">
+                    <div class="col-12">
+                        <p>12-04-2019</p>
+                    </div>
                 </div>
+                <!-- **Date -->
+
                 <!-- Text -->
-                <div class="row text-justify pl-3 pr-3 h-75">
+                <div class="row text-justify pl-3 pr-3">
                     <p id="caption" class=""></p>
                 </div>
 
-                <div class="row" style="position: absolute;bottom:5px;">
-                    <!-- Photographer -->
+                <!-- Photographer -->
+                <div class="row">
+
                     <div class="col-1 text-center">
                         <i class="fas fa-camera"></i>
                     </div>
-                    <div class="col-1 offset-1 p-0">
+                    <div class="col-1 p-0 pl-1">
                         <p class="m-0" id="photographer"></p>
                     </div>
                 </div>
+                <!-- **Photographer -->
+
             </div>
         </div>
     </div>
 
-    <!-- Image Gallery -->
-    <section class="d-none">
-        <img src="/img/southBank.jpg" id="South-Bank" alt="this test" class="galleryImage">
-        <img src="/img/mt-coottha.jpg" id="mt-coottha" alt="Blazzer" class="galleryImage">
-        <img src="/img/demo-image-01.jpg" id="Brisbane-Airport" alt="Airport" class="galleryImage">
-    </section>
-    <!-- **Image Gallery -->
+
 </div>
 <!-- End Event displayer -->
 

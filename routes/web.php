@@ -11,20 +11,18 @@
 |
 */
 
+Route::get('locale/{locale}', function ($locale){
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::get('/', 'IndexController@index');
-
-
-//Route::resource('postManager', 'PostController');
 
 Route::resource('trips', 'TripController');
 Route::resource('trip', 'TripController');
+Route::get('tripManager', 'TripController@ShowAdmin');
 
 Route::get('trip/{trip}/markers', 'PostController@markers');
 Route::resource('trip/{trip}/postManager', 'PostController');
 
-Route::get('blade', function () {
-    return view('child');
-});
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

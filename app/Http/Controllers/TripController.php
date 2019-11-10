@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\Trip;
 
 class TripController extends Controller
@@ -29,7 +31,8 @@ class TripController extends Controller
      */
     public function create()
     {
-        return "test";
+        
+        return view('tripManager.create');
         //
     }
 
@@ -41,7 +44,39 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'lon'=>'required',
+            'lat'=>'required',
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'date'=>'required',
+            'text_fr'=>'required',
+            'text_en'=>'required',
+        ]);
+        
+        $image = $request->file('image');
+        $extension = $image->getClientOriginalExtension();
+        $filename = $request->get('name') . "_" . time().'.'.$image->getClientOriginalExtension();
+        Storage::disk('tripImages')->put($filename,  File::get($image));
+       
+        //$check = Post::insert($insert);
+ 
+        //return Redirect::to("image")->withSuccess('Great! Image has been successfully uploaded.');
+
+
+        $trip = new Trip([
+            'name' => $request->get('name'),
+            'lon' => $request->get('lon'),
+            'lat' => $request->get('lat'),
+            'path' => $filename,
+            'date' => $request->get('date'),
+            'text_fr' => $request->get('text_fr'),
+            'text_en' => $request->get('text_en')
+
+        ]);
+        $trip->save();
+        return redirect('/trip/')->with('success', 'Contact saved!');
     }
 
     /**
@@ -54,8 +89,18 @@ class TripController extends Controller
     {
         //
         $trip = Trip::where('name',$name)->first();
+        
         if($trip)
             return view('trip',compact("trip"));
+        else
+            return redirect('/');
+    }
+
+    public function ShowAdmin(){
+
+        $trips = Trip::all();
+        if($trips)
+            return view('tripManager.trips',compact("trips"));
         else
             return redirect('/');
     }
@@ -68,6 +113,8 @@ class TripController extends Controller
      */
     public function edit($id)
     {
+        $trip = Trip::find($id);
+        return view('tripManager.edit', compact('trip'));  
         //
     }
 
@@ -80,7 +127,37 @@ class TripController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'lon'=>'required',
+            'lat'=>'required',
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'date'=>'required',
+            'text_fr'=>'required',
+            'text_en'=>'required',
+        ]);
+        
+        $image = $request->file('image');
+        $extension = $image->getClientOriginalExtension();
+        $filename = $request->get('name') . "_" . time().'.'.$image->getClientOriginalExtension();
+        Storage::disk('tripImages')->put($filename,  File::get($image));
+       
+        //$check = Post::insert($insert);
+ 
+        //return Redirect::to("image")->withSuccess('Great! Image has been successfully uploaded.');
+
+
+        $trip = Trip::find($id);
+        $trip->name = $request->get('name');
+        $trip->lon = $request->get('lon');
+        $trip->lat =  $request->get('lat');
+        $trip->path = $filename;
+        $trip->date = $request->get('date');
+        $trip->text_fr = $request->get('text_fr');
+        $trip->text_en = $request->get('text_en');
+        $trip->save();
+        return redirect('/trip/')->with('success', 'Contact saved!');
     }
 
     /**

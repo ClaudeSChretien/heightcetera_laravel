@@ -9,7 +9,7 @@
     </div>
 
     <!-- Map settings logo -->
-    <div id="settings-logo" class="hidden">
+    <div id="filters-icon" class="hidden">
         <img class="d-block w-100" src="/img/settings.png" alt="">
     </div>
     <!-- **Map settings logo -->
@@ -18,9 +18,12 @@
     <div id="mapSettings">
         <div id="filter" class="rounded">
             <div class="btn-group filter-options w-100">
-                <button class="btn btn-primary filter active" id="restaurant"><img src="/img/icon/restaurant.png" class="filterIcon" alt=""></button>
-                <button class="btn btn-primary filter active" id="personal"><img src="/img/icon/personal.png" class="filterIcon" alt=""></button>
-                <button class="btn btn-primary filter active" id="activity"><img src="/img/icon/activity.png" class="filterIcon" alt=""></button>
+                <button class="btn btn-primary filter active" id="restaurant"><img src="/img/icon/restaurant.png"
+                        class="filterIcon" alt=""></button>
+                <button class="btn btn-primary filter active" id="personal"><img src="/img/icon/personal.png"
+                        class="filterIcon" alt=""></button>
+                <button class="btn btn-primary filter active" id="activity"><img src="/img/icon/activity.png"
+                        class="filterIcon" alt=""></button>
             </div>
         </div>
 

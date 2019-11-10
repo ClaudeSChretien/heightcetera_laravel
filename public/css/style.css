@@ -54,16 +54,29 @@ body {
     transform: rotate(0);
 }
 
-
+.language
+{
+    position: absolute;
+    top:50px;
+    right:40px;
+    z-index: 20;
+}
+.back-button
+{
+    position: absolute;
+    top:40px;
+    left:40px;
+    z-index: 20;
+}
 /* **Nav  */
 
 #logo {
     z-index: 20;
     position: fixed;
-    width: 450px;
+    width: 200px;
     top: 10%;
     left: 50%;
-    margin-left: -225px;
+    margin-left: -100px;
     /* Negative half of width. */
 }
 
@@ -83,10 +96,10 @@ body {
 #logo-text{
     z-index: 25;
     position: fixed;
-    width: 450px;
-    top: 50%;
+    width: 250px;
+    top: 30%;
     left: 50%;
-    margin-left: -225px;
+    margin-left: -125px;
     /* Negative half of width. */
 
 }
@@ -117,11 +130,11 @@ body {
     z-index: 1;
 }
 
-#settings-logo {
+#filters-icon {
     z-index: 5;
     position: fixed;
     width: 100px;
-    bottom: -20px;
+    bottom: -40px;
     left: 50%;
     margin-left: -50px;
     /* Negative half of width. */
@@ -174,14 +187,13 @@ body {
 }
 
 #eventDisplayer {
-    position: absolute;
+    position: fixed;
+    overflow: auto;
     z-index: 20;
-    height: 70%;
     width: 90%;
     left: 50%;
     margin-left: -45%;
     top: 10%;
-    /*bottom: 10%;*/
     background-color: white;
     animation: createBox .5s;
 }
@@ -203,6 +215,9 @@ body {
     /* align horizontal */
     align-items: center;
     /* align vertical */
+}
+#eventDisplayerInfo{
+    background-color: white;
 }
 
 #location {

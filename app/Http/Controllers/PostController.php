@@ -25,8 +25,9 @@ class PostController extends Controller
     {
         //
         $trip = Trip::where('name',$test)->first();
+        $posts = Trip::find($trip->id)->posts;
         if($trip)
-            return view('postManager',compact("trip"));
+            return view('postManager',compact("trip","posts"));
         else
             return redirect('/');
     }
@@ -65,13 +66,14 @@ class PostController extends Controller
             'rating'=>'required',
             'date'=>'required',
             'type'=>'required',
-            'text'=>'required',
+            'text_fr'=>'required',
+            'text_en'=>'required',
         ]);
         
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
         $filename = $request->get('name') . "_" . time().'.'.$image->getClientOriginalExtension();
-        Storage::disk('image')->put($filename,  File::get($image));
+        Storage::disk('postsImages')->put($filename,  File::get($image));
 
         
        
@@ -90,7 +92,8 @@ class PostController extends Controller
             'rating' => $request->get('rating'),
             'date' => $request->get('date'),//$dt->toDateString(),
             'type' => $request->get('type'),
-            'text' => $request->get('text'),
+            'text_fr' => $request->get('text_fr'),
+            'text_en' => $request->get('text_en')
 
         ]);
         $post->save();
@@ -111,6 +114,7 @@ class PostController extends Controller
     public function markers($name)
     {
         $id = Trip::where('name', $name)->first()->id;
+
         $posts = Trip::find($id)->posts;
         if($posts)
             return $posts;
@@ -130,6 +134,7 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        return "post edit";
     }
 
     /**

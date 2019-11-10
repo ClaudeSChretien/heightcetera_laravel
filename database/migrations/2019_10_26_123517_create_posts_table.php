@@ -25,7 +25,8 @@ class CreatePostsTable extends Migration
             $table->string('rating');
             $table->date('date');
             $table->string('type');
-            $table->text('text');
+            $table->text('text_fr');
+            $table->text('text_en');
         });
     }
 

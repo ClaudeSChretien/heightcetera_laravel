@@ -5,7 +5,7 @@
 @section('title', 'heightcetera')
 
 @section('content')
-@include('layouts.logosmall')
+    @include('layouts.logosmall')
     @include('layouts.nav2')
     @include('layouts.welcome.fullWidth')
     @include('layouts.icons')

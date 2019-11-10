@@ -1,4 +1,4 @@
 <!-- **Map app -->
-<section class="center slider">
+<section class="center slider" style="display:none;">
         
 </section>

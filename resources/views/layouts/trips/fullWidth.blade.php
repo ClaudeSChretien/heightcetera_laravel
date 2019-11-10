@@ -21,7 +21,7 @@
           Nulla a felis massa. Nunc gravida porta quam sed ullamcorper.
           Nunc ante tortor, lobortis nec congue sit amet, consequat eget purus.
           In hac habitasse platea dictumst. Suspendisse in nisl dolor.
-
+        </p>
       </div>
     </div>
   </div>

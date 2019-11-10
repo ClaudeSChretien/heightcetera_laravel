@@ -1,6 +1,14 @@
 <!-- Navigation -->
-<nav class="fixed-top py-3" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/"><i class="fas fa-2x fa-chevron-left"></i></a>
-    </div>
-</nav>
+
+<div class="back-button" style="z-index:100;">
+    <a class="navbar-brand js-scroll-trigger" href="{{ url()->previous() }}"><i
+            class="fas fa-2x fa-chevron-left"></i></a>
+</div>
+
+<div class="language" style="z-index:100;">
+    @if (App::getLocale() == "fr")
+    <a href="{{ url('locale/en') }}">EN</a>
+    @else
+    <a href="{{ url('locale/fr') }}">FR</a>
+    @endif
+</div>

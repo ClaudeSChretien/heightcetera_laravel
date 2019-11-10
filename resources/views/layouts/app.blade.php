@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="utf-8">
@@ -27,9 +27,11 @@
 
     <!-- Custom styles  -->
     <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/creative.css" rel="stylesheet">
 </head>
 
 <body>
+    
     @auth
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
@@ -95,23 +97,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
 
-<script src="/js/script.js"></script>
+<script src="/js/hcMap.js"></script>
 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD6D3hWMETbxfK6zB5E20y_E-4w0GI2S0&callback=initMap"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD6D3hWMETbxfK6zB5E20y_E-4w0GI2S0&callback=initMarkers"></script>
 <script type="text/javascript" src="/slick/slick.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-          $('.slider').slick({
-            slidesToShow: 7,
-            slidesToScroll: 3,
-            dots: false,
-            centerMode: false,
-            infinite: true,
-            focusOnSelect: true,
-            variableWidth:true
-          })
-      });
-</script>
 
 </html>

@@ -55,8 +55,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="text">Description:</label>
-                            <textarea class="form-control" name="text" rows="3"></textarea>
+                            <label for="text">Description Francais:</label>
+                            <textarea class="form-control" name="text_fr" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Description Englais:</label>
+                            <textarea class="form-control" name="text_en" rows="3"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="image">Image</label>

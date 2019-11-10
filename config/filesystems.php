@@ -54,9 +54,15 @@ return [
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
-        'image' => [
+        'postsImages' => [
             'driver' => 'local',
-            'root' => public_path()."/image",
+            'root' => public_path()."/postsImages",
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+        'tripImages' => [
+            'driver' => 'local',
+            'root' => public_path()."/tripImages",
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],

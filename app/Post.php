@@ -18,6 +18,9 @@ class Post extends Model
         'rating',
         'date',
         'type',
-        'text',
+        'text_fr',
+        'text_en'
     ];
+
+    protected $hidden = ['id','created_at','updated_at','trip_id'];
 }

@@ -1,3 +1,5 @@
+var markersInfos;
+
 $(document).ready(function() {
     console.log("ready!");
 
@@ -119,6 +121,18 @@ $(document).ready(function() {
 var map;
 var markers = [];
 var markerCluster;
+function initMarkers() {
+
+    var path = document.location.pathname;
+    
+    
+    $.getJSON(path +  "/markers", function( data ) {
+        markersInfos = data;
+        initMap();
+    });
+
+    
+}
 
 function initMap() {
 
