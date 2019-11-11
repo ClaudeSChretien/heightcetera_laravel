@@ -23,14 +23,19 @@
                             <input type="text" class="form-control" name="name" />
                         </div>
 
-                        <div class="form-group col-6">
-                            <label for="lon">Lon:</label>
-                            <input type="number" class="form-control" name="lon" />
-                        </div>
 
                         <div class="form-group col-5">
                             <label for="lat">Lat:</label>
-                            <input type="number" class="form-control" name="lat" />
+                            <input type="number" class="form-control" step="any" name="lat" />
+                        </div>
+                        <div class="form-group col-5">
+                            <label for="lon">Lon:</label>
+                            <input type="number" class="form-control" step="any" name="lon" />
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label for="zoom">Zoom:</label>
+                            <input type="number" class="form-control" name="zoom" />
                         </div>
                     </div>
                     <div class="col-6">

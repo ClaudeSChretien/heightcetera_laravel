@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    
+
     @auth
     @endauth
     @yield('content')
@@ -48,7 +48,11 @@
 <script src="/js/creative.js"></script>
 
 <script src="/js/macy.js"></script>
+
 <script>
+    // To move to a specific file
+    if ($('#macy-container').length)
+    {
     var macy = Macy({
     container: '#macy-container',
     trueOrder: false,
@@ -61,7 +65,9 @@
         520: 1,
         400: 1
     }
+
 });
+}
 </script>
 
 </html>

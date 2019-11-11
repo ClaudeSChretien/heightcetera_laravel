@@ -122,9 +122,11 @@ $(document).ready(function () {
 // Initialize and add the map
 
 var map;
+var mapInfo;
 var markers = [];
 var markerCluster;
 var markersInfos;
+
 
 
 function initMarkers() {
@@ -132,26 +134,34 @@ function initMarkers() {
     var path = document.location.pathname;
 
 
-    $.getJSON(path + "/markers", function (data) {
-        markersInfos = data;
-        initMap();
+    $.getJSON(path + "/mapInfo", function (data) {
 
-        markersInfos.forEach((item) => {
-
-            // Create Slider
-            var src = item.path
-            $(".slider").append("<div><img src='/postsImages/" + src + "' class='sliderimg'></div>")
-
+        mapInfo = data;
+        $.getJSON(path + "/markers", function (data) {
+            markersInfos = data;
+    
+            markersInfos.forEach((item) => {
+    
+                // Create Slider
+                var src = item.path
+                $(".slider").append("<div><img src='/postsImages/" + src + "' class='sliderimg'></div>")
+    
+            });
+    
+            initMap();
         });
     });
+
+    
+
 }
 
 function initMap() {
 
     // where the map is located .. Need to make that responsive
     var mapOptions = {
-        center: new google.maps.LatLng(-27.470125, 153.021072),
-        zoom: 12,
+        center: new google.maps.LatLng(mapInfo.lat, mapInfo.lon),
+        zoom: mapInfo.zoom,
         disableDefaultUI: true,
         fullscreenControl: false,
         streetViewControl: false

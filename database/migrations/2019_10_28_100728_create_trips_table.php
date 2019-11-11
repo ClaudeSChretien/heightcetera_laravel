@@ -19,6 +19,7 @@ class CreateTripsTable extends Migration
             $table->string("name");
             $table->decimal('lon');
             $table->decimal('lat');
+            $table->integer('zoom');
             $table->string('path');
             $table->date('date');
             $table->text('text_fr');

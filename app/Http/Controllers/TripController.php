@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Trip;
+use App\Post;
 
 class TripController extends Controller
 {
@@ -48,6 +49,7 @@ class TripController extends Controller
             'name'=>'required',
             'lon'=>'required',
             'lat'=>'required',
+            'zoom'=>'required',
             'image' => 'required',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'date'=>'required',
@@ -69,6 +71,7 @@ class TripController extends Controller
             'name' => $request->get('name'),
             'lon' => $request->get('lon'),
             'lat' => $request->get('lat'),
+            'zoom' => $request->get('zoom'),
             'path' => $filename,
             'date' => $request->get('date'),
             'text_fr' => $request->get('text_fr'),
@@ -95,6 +98,28 @@ class TripController extends Controller
         else
             return redirect('/');
     }
+
+    public function markers($name)
+    {
+        $id = Trip::where('name', $name)->first()->id;
+
+        $posts = Trip::find($id)->posts;
+        if ($posts)
+            return $posts;
+        else
+            return redirect('/');
+    }
+
+    public function mapInfo($name)
+    {
+        $trip = Trip::where('name', $name)->first();
+
+        if ($trip)
+            return $trip;
+        else
+            return redirect('/');
+    }
+
 
     public function ShowAdmin(){
 
@@ -168,6 +193,12 @@ class TripController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $trip = Trip::find($id);
+        $posts = Post::where('trip_id', $id);
+        
+        $trip->delete();
+        $posts->delete();
+
+        return redirect('/tripManager')->with('success', 'Contact deleted!');
     }
 }

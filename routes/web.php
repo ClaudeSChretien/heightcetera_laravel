@@ -18,11 +18,13 @@ Route::get('locale/{locale}', function ($locale){
 
 Route::get('/', 'IndexController@index');
 
+Route::get('trip/{trip}/mapInfo', 'TripController@mapInfo');
 Route::resource('trips', 'TripController');
 Route::resource('trip', 'TripController');
-Route::get('tripManager', 'TripController@ShowAdmin');
 
-Route::get('trip/{trip}/markers', 'PostController@markers');
+Route::get('tripManager', 'TripController@ShowAdmin');
+Route::get('trip/{trip}/markers', 'TripController@markers');
+
 Route::resource('trip/{trip}/postManager', 'PostController');
 
 Auth::routes();

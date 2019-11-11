@@ -11,6 +11,7 @@ class Trip extends Model
         'name',
         'lon',
         'lat',
+        'zoom',
         'date',
         'path',
         'text_fr',
@@ -21,4 +22,6 @@ class Trip extends Model
     {
         return $this->hasMany('App\Post');
     }
+    
+    protected $hidden = ['id','created_at','updated_at','date',"path","text_fr","text_en"];
 }

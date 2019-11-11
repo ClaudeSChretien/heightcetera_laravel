@@ -21,12 +21,14 @@ class CreatePostsTable extends Migration
             $table->decimal('lon', 11, 8);
             $table->decimal('lat', 11, 8);
             $table->string('path');
+            $table->string('url');
             $table->string('photographer');
             $table->string('rating');
             $table->date('date');
             $table->string('type');
             $table->text('text_fr');
             $table->text('text_en');
+            $table->text('file_type');
         });
     }
 

@@ -4,7 +4,7 @@
     @foreach ($trips as $trip)
     <div class="cd-timeline__block">
       <div class="cd-timeline__img cd-timeline__img--picture">
-        <i class="fas fa-2x fa-walking text-primary mb-0" aria-hidden="true"></i>
+        <i class="fas fa-2x map-pin text-primary mb-0" aria-hidden="true"></i>
       </div> <!-- cd-timeline__img -->
 
       <div class="cd-timeline__content text-component">
@@ -23,4 +23,3 @@
 
   </div>
 </section> <!-- cd-timeline -->
-<script src="/js/main.js"></script>

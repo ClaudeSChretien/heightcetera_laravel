@@ -23,18 +23,23 @@
                             <input type="text" class="form-control" name="name" />
                         </div>
 
-                        <div class="form-group col-6">
-                            <label for="lon">Lon:</label>
-                            <input type="number" class="form-control" name="lon" />
-                        </div>
-
                         <div class="form-group col-5">
                             <label for="lat">Lat:</label>
-                            <input type="number" class="form-control" name="lat" />
+                            <input type="number" step="any" class="form-control" name="lat" />
                         </div>
+
+                        <div class="form-group col-6">
+                            <label for="lon">Lon:</label>
+                            <input type="number" step="any" class="form-control" name="lon" />
+                        </div>
+
                         <div class="form-group">
                             <label for="photographer">Photographer:</label>
                             <input type="text" class="form-control" name="photographer" value="CSC" />
+                        </div>
+                        <div class="form-group">
+                            <label for="url">Url:</label>
+                            <input type="text" class="form-control" name="url" value="" />
                         </div>
                     </div>
                     <div class="col-6">

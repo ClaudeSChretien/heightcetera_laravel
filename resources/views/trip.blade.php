@@ -6,7 +6,7 @@
 @include('layouts.nav2')
     
     @include('layouts.logo')
-    @include('layouts.trip.fullWidth')
+    {{--@include('layouts.trip.fullWidth') --}}
     @include('layouts.map')
     
     @include('layouts.tooltip')

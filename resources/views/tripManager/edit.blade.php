@@ -26,12 +26,12 @@
 
                         <div class="form-group col-6">
                             <label for="lon">Lon:</label>
-                            <input type="number" class="form-control" name="lon" step="0.000001"  value="{{ $trip->lon }}" />
+                            <input type="number" class="form-control" name="lon" step="any"  value="{{ $trip->lon }}" />
                         </div>
 
                         <div class="form-group col-5">
                             <label for="lat">Lat:</label>
-                            <input type="number" class="form-control" name="lat" step="0.000001" value="{{ $trip->lat }}" />
+                            <input type="number" class="form-control" name="lat" step="any" value="{{ $trip->lat }}" />
                         </div>
                     </div>
                     <div class="col-6">
@@ -41,11 +41,11 @@
                         </div>
                         <div class="form-group">
                             <label for="text">Description Francais:</label>
-                            <textarea class="form-control" name="text_fr" rows="3" value="{{ $trip->text_fr }}" ></textarea>
+                            <textarea class="form-control" name="text_fr" rows="3" >{{ $trip->text_fr }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="text">Description Englais:</label>
-                            <textarea class="form-control" name="text_en" rows="3" value="{{ $trip->text_en }}" ></textarea>
+                            <textarea class="form-control" name="text_en" rows="3" >{{ $trip->text_en }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="image">Image</label>

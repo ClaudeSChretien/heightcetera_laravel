@@ -13,6 +13,8 @@ class Post extends Model
         'lat',
         'trip_id',
         'path',
+        'url',
+        'file_type',
         'image',
         'photographer',
         'rating',
