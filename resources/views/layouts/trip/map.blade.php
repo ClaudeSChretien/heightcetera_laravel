@@ -18,11 +18,11 @@
     <div id="mapSettings">
         <div id="filter" class="rounded">
             <div class="btn-group filter-options w-100">
-                <button class="btn btn-primary filter active" id="restaurant"><img src="/img/icon/restaurant.png"
+                <button class="btn btn-light filter active" id="restaurant"><img src="/img/icon/restaurant.png"
                         class="filterIcon" alt=""></button>
-                <button class="btn btn-primary filter active" id="other"><img src="/img/icon/other.png"
+                <button class="btn btn-light filter active" id="other"><img src="/img/icon/other.png"
                         class="filterIcon" alt=""></button>
-                <button class="btn btn-primary filter active" id="activity"><img src="/img/icon/activity.png"
+                <button class="btn btn-light filter active" id="activity"><img src="/img/icon/activity.png"
                         class="filterIcon" alt=""></button>
             </div>
         </div>

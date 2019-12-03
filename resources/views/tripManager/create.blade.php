@@ -22,8 +22,6 @@
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" name="name" />
                         </div>
-
-
                         <div class="form-group col-5">
                             <label for="lat">Lat:</label>
                             <input type="number" class="form-control" step="any" name="lat" />

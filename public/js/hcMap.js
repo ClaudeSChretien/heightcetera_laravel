@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(document).ready(function() {
     // 
-    $(".test").click(function () {
+    $(".test").click(function() {
         $(this).fadeOut();
 
     })
-    $("#filters-icon").click(function () {
+    $("#filters-icon").click(function() {
         if ($(this).hasClass("hidden")) {
             $(".slick-slider").fadeOut();
             $("#mapSettings").animate({
@@ -17,7 +17,7 @@ $(document).ready(function () {
                 "margin-left": "-25px"
             }, {
                 duration: 500,
-                complete: function () {
+                complete: function() {
                     $("#filters-icon").animate({
                         bottom: "-15px"
                     }, 500);
@@ -35,7 +35,7 @@ $(document).ready(function () {
                 "margin-left": "-50px"
             }, {
                 duration: 500,
-                complete: function () {
+                complete: function() {
                     $(".slick-slider").fadeIn();
                     $("#filters-icon").animate({
                         bottom: "-40px"
@@ -46,75 +46,86 @@ $(document).ready(function () {
         }
     }); //#settings-logo
 
-    $(".filter").click(function () {
+    $(".filter").click(function() {
 
-        // Verify the state of the filters
-        // if all active and one is selected, disable others.
-        // if only one is activate and it is disabled. Activate all.
+            // Verify the state of the filters
+            // if all active and one is selected, disable others.
+            // if only one is activate and it is disabled. Activate all.
 
-        var filtersNb = $(".filter.active").length
-        var categories = []
-        var thisFilter = this
+            var filtersNb = $(".filter.active").length
+            var categories = []
+            var thisFilter = this
 
-        $(".filter.active").each(function () { categories.push(this.id) });
+            $(".filter.active").each(function() { categories.push(this.id) });
 
-        switch (filtersNb) {
-            case 1:
-                var activeFilter = $(".filter.active")
-                if (this.id == activeFilter[0].id)
-                    $(".filter").each(function (index) {
-                        if (this.id != activeFilter.id) {
-                            $(this).addClass("active");
-                            $(this).addClass("btn-primary");
-                            categories.push(this.id)
+            switch (filtersNb) {
+                case 1:
+                    var activeFilter = $(".filter.active")
+                    if (this.id == activeFilter[0].id)
+                        $(".filter").each(function(index) {
+                            if (this.id != activeFilter.id) {
+                                $(this).addClass("active");
+                                $(this).addClass("btn-light");
+                                categories.push(this.id)
+                            }
+                        });
+                    else {
+                        $(this).addClass("active")
+                        $(this).addClass("btn-light");
+                    }
+                    categories.push(this.id)
+                        // code block
+                    break;
+                case 3:
+                    $(".filter").each(function(index) {
+                        if (thisFilter.id != this.id) {
+                            $(this).removeClass("active");
+                            $(this).removeClass("btn-light");
+                            categories.splice(categories.indexOf(this.id), 1);
                         }
                     });
-                else {
-                    $(this).addClass("active")
-                    $(this).addClass("btn-primary");
-                }
-                categories.push(this.id)
-                // code block
-                break;
-            case 3:
-                $(".filter").each(function (index) {
-                    if (thisFilter.id != this.id) {
-                        $(this).removeClass("active");
-                        $(this).removeClass("btn-primary");
-                        categories.splice(categories.indexOf(this.id), 1);
-                    }
-                });
-                // code block
-                break;
-            default:
-                $(this).toggleClass("active")
-                $(this).toggleClass("btn-primary");
-                if ($(this).hasClass("active")) categories.push(this.id)
-                else categories.splice(categories.indexOf(this.id), 1);
-            // code block
-        }
-        var markerTemp = []
-        markersInfos.forEach((item, index) => {
-            if (categories.indexOf(item.type) >= 0)
-                markerTemp.push(item)
-        });
-        addMarkers(markerTemp)
-    }) //.filter
+                    // code block
+                    break;
+                default:
+                    $(this).toggleClass("active")
+                    $(this).toggleClass("btn-light");
+                    if ($(this).hasClass("active")) categories.push(this.id)
+                    else categories.splice(categories.indexOf(this.id), 1);
+                    // code block
+            }
+            var markerTemp = []
+            markersInfos.forEach((item, index) => {
+                if (categories.indexOf(item.type) >= 0)
+                    markerTemp.push(item)
+            });
+            addMarkers(markerTemp)
+        }) //.filter
 
-    $("#eventDisplayer").click(function (evt) {
-        if (evt.target.id == "location")
-            return;
-        eventDisplayerContainer.css("display", "none");
-        eventDisplayerImg.removeClass("w-100")
-        eventDisplayerImg.removeClass("h-100")
+    $("#eventDisplayer").click(function(evt) {
+            if (evt.target.id == "location")
+                return;
+            eventDisplayerContainer.css("display", "none");
+            eventDisplayerImg.removeClass("w-100")
+            eventDisplayerImg.removeClass("h-100")
 
-        eventDisplayerImgDiv.removeClass("h-100")
-        eventDisplayerImgDiv.removeClass("w-100")
+            eventDisplayerImgDiv.removeClass("h-100")
+            eventDisplayerImgDiv.removeClass("w-100")
 
-        eventDisplayer.css("bottom","")
-        
-        $('body').css('overflow', '')
-    }) // #eventDisplayer
+            eventDisplayer.css("bottom", "")
+
+            $('body').css('overflow', '')
+        }) // #eventDisplayer
+
+
+
+    function firstleft() {
+        $("#logo").animate({ "top": "-=25px" }, 1500, "swing", ($("#logo").css("width") != "100px" && firstright));
+    }
+
+    function firstright() {
+        $("#logo").animate({ "top": "+=25px" }, 1500, "swing", ($("#logo").css("width") != "100px" && firstleft));
+    }
+    firstleft();
 });
 
 
@@ -134,26 +145,14 @@ function initMarkers() {
     var path = document.location.pathname;
 
 
-    $.getJSON(path + "/mapInfo", function (data) {
+    $.getJSON(path + "/mapInfo", function(data) {
 
         mapInfo = data;
-        $.getJSON(path + "/markers", function (data) {
+        $.getJSON(path + "/markers", function(data) {
             markersInfos = data;
-    
-            markersInfos.forEach((item) => {
-    
-                // Create Slider
-                var src = item.path
-                $(".slider").append("<div><img src='/postsImages/" + src + "' class='sliderimg'></div>")
-    
-            });
-    
             initMap();
         });
     });
-
-    
-
 }
 
 function initMap() {
@@ -176,7 +175,7 @@ function initMap() {
     markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
 
 
-    google.maps.event.addListener(map, 'idle', function () {
+    google.maps.event.addListener(map, 'idle', function() {
         //showVisibleMarkers();
     });
 
@@ -207,8 +206,8 @@ function addMarkers(markersInfos) {
                 map: map,
                 icon: markerIcon
             });
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
                 //map.panTo(locations[i][1]);
                 displayImage(markersInfos[i]);
             }
@@ -241,7 +240,7 @@ function showVisibleMarkers() {
 */
 
 /* Lock */
-$("#logo").click(function () {
+$("#logo").click(function() {
 
     $("#logo").animate({
         top: "-10px",
@@ -275,28 +274,28 @@ $("#logo").click(function () {
         variableWidth: true
     })
 
-    $(".sliderimg").each(function (index) {
+    $(".sliderimg").each(function(index) {
         var isDragging = false;
         var gotMouseDown = false;
         $(this)
-            .mousedown(function () {
+            .mousedown(function() {
                 isDragging = false;
                 gotMouseDown = true;
-                $(this).mousemove(function () {
+                $(this).mousemove(function() {
                     isDragging = true;
                     $(this).off("mousemove");
                 });
             })
 
-            .mouseup(function () {
-                var wasDragging = isDragging;
-                isDragging = false;
-                $(this).off("mousemove");
-                if (!wasDragging && gotMouseDown) {
-                    displayImage(markersInfos[index]);
-                    gotMouseDown = false;
-                }
-            });
+        .mouseup(function() {
+            var wasDragging = isDragging;
+            isDragging = false;
+            $(this).off("mousemove");
+            if (!wasDragging && gotMouseDown) {
+                displayImage(markersInfos[index]);
+                gotMouseDown = false;
+            }
+        });
 
     });
     $(".slider").fadeIn();
@@ -309,29 +308,30 @@ var eventDisplayerImg = $("#eventDisplayerImg");
 var eventDisplayerImgDiv = $("#eventDisplayerImgDiv");
 
 function displayImage(marker) {
-    var img = $("#" + marker.name)
+    var img = $("#" + marker.id)
     eventDisplayerImg.attr("src", "/postsImages/" + marker.path);
 
 
     eventDisplayerContainer.css("display", "block");
 
     $("#location").text(marker.name)
-    $("#caption").text(marker.text_fr)
+    $("#caption").text(marker["text_" + document.documentElement.lang])
     $("#photographer").text(marker.photographer)
+    $("#postDate").text(marker.date)
 
     var imgHeight = $("#eventDisplayerImg").height();
     var imgWidth = $("#eventDisplayerImg").width();
     if (imgHeight > imgWidth) {
         eventDisplayer.css("bottom", "10px")
-        eventDisplayerImgDiv.addClass("h-100")
-        eventDisplayerImg.addClass("h-100")
-    }
-    else {
+        eventDisplayerImgDiv.addClass("w-100")
+        eventDisplayerImg.height($(window).height() * 0.8)
+    } else {
         eventDisplayer.css("bottom", "10px")
         eventDisplayerImgDiv.addClass("w-100")
         eventDisplayerImg.addClass("w-100")
+        eventDisplayerImg.height("")
     }
-    
+
     $('body').css('overflow', 'hidden')
 
 

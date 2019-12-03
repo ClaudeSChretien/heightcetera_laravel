@@ -14,7 +14,7 @@
                                 {{ $post->name }}
                         </div>
                         <div class="project-name">
-                            Project Name
+                                {{ $post->text_fr }}
                         </div>
                     </div>
                 </a>

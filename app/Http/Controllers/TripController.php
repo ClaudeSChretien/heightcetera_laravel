@@ -17,7 +17,6 @@ class TripController extends Controller
      */
     public function index()
     {
-        //
         $trips = Trip::all();
         if($trips)
             return view('trips',compact("trips"));
@@ -32,9 +31,7 @@ class TripController extends Controller
      */
     public function create()
     {
-        
         return view('tripManager.create');
-        //
     }
 
     /**
@@ -59,14 +56,9 @@ class TripController extends Controller
         
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
-        $filename = $request->get('name') . "_" . time().'.'.$image->getClientOriginalExtension();
+        $filename = $request->get('name') . "_" . time() . '.' . $extension;
         Storage::disk('tripImages')->put($filename,  File::get($image));
        
-        //$check = Post::insert($insert);
- 
-        //return Redirect::to("image")->withSuccess('Great! Image has been successfully uploaded.');
-
-
         $trip = new Trip([
             'name' => $request->get('name'),
             'lon' => $request->get('lon'),
@@ -90,11 +82,11 @@ class TripController extends Controller
      */
     public function show($name)
     {
-        //
         $trip = Trip::where('name',$name)->first();
+        $posts = Trip::find($trip->id)->posts;
         
         if($trip)
-            return view('trip',compact("trip"));
+            return view('trip',compact("trip","posts"));
         else
             return redirect('/');
     }
@@ -139,8 +131,7 @@ class TripController extends Controller
     public function edit($id)
     {
         $trip = Trip::find($id);
-        return view('tripManager.edit', compact('trip'));  
-        //
+        return view('tripManager.edit', compact('trip'));
     }
 
     /**
@@ -165,13 +156,8 @@ class TripController extends Controller
         
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
-        $filename = $request->get('name') . "_" . time().'.'.$image->getClientOriginalExtension();
+        $filename = $request->get('name') . "_" . time() . '.' . $extension;
         Storage::disk('tripImages')->put($filename,  File::get($image));
-       
-        //$check = Post::insert($insert);
- 
-        //return Redirect::to("image")->withSuccess('Great! Image has been successfully uploaded.');
-
 
         $trip = Trip::find($id);
         $trip->name = $request->get('name');

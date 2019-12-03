@@ -23,7 +23,6 @@ class PostController extends Controller
      */
     public function index($test)
     {
-        //
         $trip = Trip::where('name', $test)->first();
 
         if ($trip) {
@@ -55,7 +54,6 @@ class PostController extends Controller
      */
     public function store(Request $request, $trip)
     {
-
         $trip_id = Trip::where('name', $trip)->first()->id;
         $request->validate([
             'name' => 'required',
@@ -73,15 +71,8 @@ class PostController extends Controller
 
         $image = $request->file('image');
         $extension = $image->getClientOriginalExtension();
-        $filename = $request->get('name') . "_" . time() . '.' . $image->getClientOriginalExtension();
+        $filename = $request->get('name') . "_" . time() . '.' . $extension;
         Storage::disk('postsImages')->put($filename,  File::get($image));
-
-
-
-        //$check = Post::insert($insert);
-
-        //return Redirect::to("image")->withSuccess('Great! Image has been successfully uploaded.');
-
 
         $post = new Post([
             'name' => $request->get('name'),
@@ -121,7 +112,6 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
         return "post edit";
     }
 

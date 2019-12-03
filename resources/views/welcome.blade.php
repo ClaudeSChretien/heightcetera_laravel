@@ -9,7 +9,8 @@
     @include('layouts.nav2')
     @include('layouts.welcome.fullWidth')
     @include('layouts.icons')
-    @include('layouts.gallery')
+    @include('layouts.trips.timeline')
+    
     @include('layouts.footer')
 @endsection
 

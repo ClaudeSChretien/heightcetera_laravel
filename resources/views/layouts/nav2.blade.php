@@ -1,7 +1,7 @@
 <!-- Navigation -->
 
 <div class="back-button" style="z-index:100;">
-    <a class="navbar-brand js-scroll-trigger" href="{{ url()->previous() }}"><i
+    <a class="navbar-brand js-scroll-trigger" href="{{ redirect()->getUrlGenerator()->previous() }}"><i
             class="fas fa-2x fa-chevron-left"></i></a>
 </div>
 

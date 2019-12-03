@@ -16,7 +16,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-        //
         $trips = Trip::all();
         $posts = DB::table('posts')->inRandomOrder()->get();
         if ($trips)

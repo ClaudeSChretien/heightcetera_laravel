@@ -24,5 +24,5 @@ class Post extends Model
         'text_en'
     ];
 
-    protected $hidden = ['id','created_at','updated_at','trip_id'];
+    protected $hidden = ['created_at','updated_at','trip_id'];
 }

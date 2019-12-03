@@ -7,8 +7,8 @@
     
     @include('layouts.logo')
     {{--@include('layouts.trip.fullWidth') --}}
-    @include('layouts.map')
+    @include('layouts.trip.map')
     
-    @include('layouts.tooltip')
-    @include('layouts.carousel')
+    @include('layouts.trip.tooltip')
+    @include('layouts.trip.carousel')
 @endsection

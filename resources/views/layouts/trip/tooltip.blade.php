@@ -38,7 +38,7 @@
                 <!-- Date -->
                 <div class="row">
                     <div class="col-12">
-                        <p>12-04-2019</p>
+                        <p id="postDate"></p>
                     </div>
                 </div>
                 <!-- **Date -->
